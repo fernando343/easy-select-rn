@@ -1,5 +1,5 @@
 {
-  "name": "react-native-easy-select",
+  "name": "easy-select",
   "version": "0.1.0",
   "description": "Picker for ios and android custom",
   "main": "lib/commonjs/index",
