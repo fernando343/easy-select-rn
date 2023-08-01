@@ -1,3 +1,6 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
+import { Picker } from "./Picker"
+
+module.exports = {
+  Picker
 }
+
