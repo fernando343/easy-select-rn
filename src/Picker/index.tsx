@@ -14,7 +14,7 @@ import { Item } from "./Item";
 import { Body, Box, Content, Header } from "./styled";
 import type { PickerProps } from "./types";
 
-export const Picker: React.FC<PickerProps> = ({
+const Picker: React.FC<PickerProps> = ({
   data = [],
   label,
   includeSelect,
@@ -129,3 +129,5 @@ export const Picker: React.FC<PickerProps> = ({
   )
   // Resto del código del componente Picker
 };
+
+export default Picker;

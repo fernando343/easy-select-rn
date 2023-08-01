@@ -1,6 +1,6 @@
-import { Picker } from "./Picker"
+/**
+ * @flow
+ */
 
-module.exports = {
-  Picker
-}
+export { default as Picker } from './Picker';
 
