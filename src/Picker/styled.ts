@@ -1,6 +1,6 @@
 import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
-import { useWidth } from "src/utils/useWidth";
 import styled from "styled-components/native";
+import { useWidth } from "../utils/useWidth";
 import type { BoxPositionType, SizeType } from "./types";
 
 export const Header = styled(BottomSheetView)`
@@ -33,7 +33,7 @@ export const Body = styled.View<BoxPositionType>`
 
 export const Box = styled.View<SizeType>`
     width: ${({ width, sizeLg, sizeLx }) =>
-    useWidth(width, "100%", "100%", "100%", sizeLg, sizeLx)};
+        useWidth(width, "100%", "100%", "100%", sizeLg, sizeLx)};
     flex: 1;
     background-color: ${({ theme }) => theme.colors.card};
 `;

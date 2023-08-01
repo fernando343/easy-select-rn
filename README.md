@@ -14,25 +14,25 @@ React Native Easy Select is a customizable and easy-to-use picker component for 
 Install the package using npm or yarn:
 
 ```
-npm install react-native-easy-select
+npm install easy-select-rn
 ```
 
 or
 
 ```
-yarn add react-native-easy-select
+yarn add easy-select-rn
 ```
 
 ## Usage
 
-Import the \`Picker\` component from \`react-native-easy-select\` and use it in your React Native application:
+Import the \`Picker\` component from \`easy-select-rn\` and use it in your React Native application:
 
 ```
 import React, { useState } from 'react';
 
 import { View, Text } from 'react-native';
 
-import { Picker } from 'react-native-easy-select';
+import { Picker } from 'easy-select-rn';
 
 const MyComponent = () => {
   const [selectedValue, setSelectedValue] = useState('');
