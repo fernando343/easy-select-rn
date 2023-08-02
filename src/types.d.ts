@@ -14,6 +14,8 @@ export interface PickerProps {
   selectLabel?: string
   value: string
   onValueChange: (value: string) => void,
+  error: boolean,
+  helperText?: string
   boxPosition?: BoxSizeType
   sizeLg: SizeValue
   sizeLx: SizeValue

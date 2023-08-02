@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import { Button, RadioButton, TextInput } from "react-native-paper";
+import { Button, HelperText, RadioButton, TextInput } from "react-native-paper";
+import type { PickerProps } from "../types";
 import { Item } from "./Item";
 import { Body, Box, Content, Header } from "./styled";
-import type { PickerProps } from "./types";
 
 const Picker: React.FC<PickerProps> = ({
   data = [],
@@ -21,6 +21,8 @@ const Picker: React.FC<PickerProps> = ({
   selectLabel,
   value,
   onValueChange,
+  error,
+  helperText,
   boxPosition = "center",
   sizeLg = "70%",
   sizeLx = "63%",
@@ -100,7 +102,16 @@ const Picker: React.FC<PickerProps> = ({
               : ""
           }
           onPressIn={handlePresentModalPress}
+          error={error}
         />
+        {helperText && (
+          <HelperText
+            style={{ marginTop: -7, marginBottom: -10 }}
+            type={error ? "error" : "info"}
+          >
+            {helperText}
+          </HelperText>
+        )}
       </TouchableOpacity>
 
       <BottomSheetModal

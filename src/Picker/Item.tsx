@@ -1,6 +1,6 @@
 import React from "react";
 import { RadioButton } from "react-native-paper";
-import type { ItemType } from "./types";
+import type { ItemType } from "../types";
 
 export const Item: React.FC<ItemType> = ({ label, value }) => {
 	return (

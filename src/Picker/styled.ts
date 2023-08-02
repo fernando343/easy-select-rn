@@ -1,7 +1,7 @@
 import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
 import styled from "styled-components/native";
+import type { BoxPositionType, SizeType } from "../types";
 import { useWidth } from "../utils/useWidth";
-import type { BoxPositionType, SizeType } from "./types";
 
 export const Header = styled(BottomSheetView)`
     width: 100%;
