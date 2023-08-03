@@ -59,7 +59,7 @@ const Picker: React.FC<PickerProps> = ({
         {includeSelect && (
           <Pk.Item
             enabled={false}
-            label={selectLabel}
+            label={capitalize(selectLabel)}
             value=""
             color="#dcdcdc"
           />
@@ -81,7 +81,7 @@ const Picker: React.FC<PickerProps> = ({
       <Content contentContainerStyle={{ paddingBottom: 20 }}>
         <RadioButton.Group onValueChange={onValueChange} value={value}>
           {data.map((item) => (
-            <Item key={item.value} label={item.label} value={item.value} />
+            <Item key={item.value} label={capitalize(item.label)} value={item.value} />
           ))}
         </RadioButton.Group>
       </Content>
