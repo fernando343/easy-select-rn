@@ -1,6 +1,6 @@
 {
   "name": "easy-select-rn",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Picker for ios and android custom",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

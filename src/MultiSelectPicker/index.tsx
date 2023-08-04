@@ -6,16 +6,41 @@ import {
 import { t } from "i18next";
 import { capitalize } from "lodash";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { ScrollView, TouchableOpacity, useWindowDimensions } from "react-native";
+import {
+	ScrollView,
+	TouchableOpacity,
+	useWindowDimensions,
+} from "react-native";
 import { Button, Checkbox, TextInput } from "react-native-paper";
 import { useTheme } from "styled-components";
-import type { PropsMultiSelectPicker } from "../types";
 import { Item } from "./Item";
 import { Body, BodyContent, Box, Content, Header, TextField } from "./styled";
 
+interface ItemData {
+	key: string; // The 'key' property of the object
+	labelData: string; // The 'labelData' property of the object
+}
 
+type SizeValue = `${number}px` | `${number}%`;
 
-export const MultiSelectPicker: React.FC<PropsMultiSelectPicker> = ({
+type BoxSizeType = "center" | "flex-start" | "flex-end";
+
+interface Props {
+	loading: boolean;
+	error?: string;
+	placeholder: string;
+	label: string;
+	data: Array<ItemData>;
+	values: string[]; // Array of strings
+	keyData: string;
+	labelData: string;
+	onValuesChange: (values: string[]) => void;
+	boxPosition?: BoxSizeType;
+	sizeLg: SizeValue;
+	sizeLx: SizeValue;
+}
+
+export const MultiSelectPicker: React.FC<Props> = ({
 	loading,
 	error,
 	placeholder,
