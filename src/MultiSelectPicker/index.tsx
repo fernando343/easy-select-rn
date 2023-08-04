@@ -6,30 +6,16 @@ import {
 import { t } from "i18next";
 import { capitalize } from "lodash";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, useWindowDimensions } from "react-native";
 import { Button, Checkbox, TextInput } from "react-native-paper";
 import { useTheme } from "styled-components";
+import type { PropsMultiSelectPicker } from "../types";
 import { Item } from "./Item";
-import { Body, Content, Header, TextField } from "./styled";
+import { Body, BodyContent, Box, Content, Header, TextField } from "./styled";
 
-interface ItemData {
-	key: string; // The 'key' property of the object
-	labelData: string; // The 'labelData' property of the object
-}
 
-interface Props {
-	loading: boolean;
-	error?: string;
-	placeholder: string;
-	label: string;
-	data: Array<ItemData>;
-	values: string[]; // Array of strings
-	keyData: string;
-	labelData: string;
-	onValuesChange: (values: string[]) => void;
-}
 
-const MultiSelectPicker: React.FC<Props> = ({
+export const MultiSelectPicker: React.FC<PropsMultiSelectPicker> = ({
 	loading,
 	error,
 	placeholder,
@@ -39,7 +25,11 @@ const MultiSelectPicker: React.FC<Props> = ({
 	keyData,
 	labelData,
 	onValuesChange,
+	boxPosition = "center",
+	sizeLg = "70%",
+	sizeLx = "63%",
 }) => {
+	const { width } = useWindowDimensions();
 	const theme = useTheme();
 
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -124,7 +114,9 @@ const MultiSelectPicker: React.FC<Props> = ({
 									<Item
 										key={index}
 										text={
-											data.find((itemFind) => itemFind[keyData] === value)[labelData]
+											data.find((itemFind) => itemFind[keyData] === value)[
+												labelData
+											]
 										}
 									/>
 								))}
@@ -141,45 +133,51 @@ const MultiSelectPicker: React.FC<Props> = ({
 				handleComponent={null}
 				backdropComponent={renderBackdrop}
 				enablePanDownToClose={false}
+				backgroundStyle={{
+					backgroundColor: "#00000000",
+				}}
+				style={{ width: "100%", alignItems: "center" }}
 			>
-				<Header>
-					<Button onPress={handleCloseSheet}>{t("done")}</Button>
-				</Header>
+				<BodyContent boxPosition={boxPosition}>
+					<Box width={width} sizeLg={sizeLg} sizeLx={sizeLx}>
+						<Header>
+							<Button onPress={handleCloseSheet}>{t("done")}</Button>
+						</Header>
 
-				<Content>
-					<BottomSheetScrollView showsVerticalScrollIndicator={false}>
-						<TextField
-							placeholder={placeholder}
-							placeholderTextColor="#75757550"
-							onBlur={handleBlur}
-							value={inputValue}
-							onChangeText={setInputValue}
-							autoCorrect={false}
-							spellCheck={false}
-							textContentType="none"
-							keyboardAppearance={theme.mode}
-						/>
-
-						{filterData.map((item) => {
-							const status = values.includes(item[keyData])
-								? "checked"
-								: "unchecked";
-
-							return (
-								<Checkbox.Item
-									key={item[keyData]}
-									label={capitalize(item[labelData])}
-									status={status}
-									mode="android"
-									onPress={() => handleSelectValues(item[keyData])}
+						<Content>
+							<BottomSheetScrollView showsVerticalScrollIndicator={false}>
+								<TextField
+									placeholder={placeholder}
+									placeholderTextColor="#75757550"
+									onBlur={handleBlur}
+									value={inputValue}
+									onChangeText={setInputValue}
+									autoCorrect={false}
+									spellCheck={false}
+									textContentType="none"
+									keyboardAppearance={theme.mode}
 								/>
-							);
-						})}
-					</BottomSheetScrollView>
-				</Content>
+
+								{filterData.map((item, index) => {
+									const status = values.includes(item[keyData])
+										? "checked"
+										: "unchecked";
+
+									return (
+										<Checkbox.Item
+											key={item[keyData]}
+											label={capitalize(item[labelData])}
+											status={status}
+											mode="android"
+											onPress={() => handleSelectValues(item[keyData])}
+										/>
+									);
+								})}
+							</BottomSheetScrollView>
+						</Content>
+					</Box>
+				</BodyContent>
 			</BottomSheetModal>
 		</>
 	);
 };
-
-export default MultiSelectPicker;

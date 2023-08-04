@@ -35,3 +35,23 @@ export interface SizeType {
   sizeLg: SizeValue
   sizeLx: SizeValue
 }
+
+interface ItemData {
+	key: string; // The 'key' property of the object
+	labelData: string; // The 'labelData' property of the object
+}
+
+export interface PropsMultiSelectPicker {
+	loading: boolean;
+	error?: string;
+	placeholder: string;
+	label: string;
+	data: Array<ItemData>;
+	values: string[]; // Array of strings
+	keyData: string;
+	labelData: string;
+	onValuesChange: (values: string[]) => void;
+	boxPosition?: BoxSizeType;
+	sizeLg: SizeValue;
+	sizeLx: SizeValue;
+}
