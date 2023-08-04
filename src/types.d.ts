@@ -55,3 +55,18 @@ export interface PropsMultiSelectPicker {
 	sizeLg: SizeValue;
 	sizeLx: SizeValue;
 }
+
+export interface PropsMultiSelectPicker {
+	loading: boolean;
+	error?: string;
+	placeholder: string;
+	label: string;
+	data: Array<ItemData>;
+	values: string[]; // Array of strings
+	keyData: string;
+	labelData: string;
+	onValuesChange: (values: string[]) => void;
+	boxPosition?: BoxSizeType;
+	sizeLg: SizeValue;
+	sizeLx: SizeValue;
+}

@@ -12,35 +12,13 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import { Button, Checkbox, TextInput } from "react-native-paper";
+import type { PropsMultiSelectPicker } from "src/types";
 import { useTheme } from "styled-components";
 import { Item } from "./Item";
 import { Body, BodyContent, Box, Content, Header, TextField } from "./styled";
 
-interface ItemData {
-	key: string; // The 'key' property of the object
-	labelData: string; // The 'labelData' property of the object
-}
 
-type SizeValue = `${number}px` | `${number}%`;
-
-type BoxSizeType = "center" | "flex-start" | "flex-end";
-
-interface Props {
-	loading: boolean;
-	error?: string;
-	placeholder: string;
-	label: string;
-	data: Array<ItemData>;
-	values: string[]; // Array of strings
-	keyData: string;
-	labelData: string;
-	onValuesChange: (values: string[]) => void;
-	boxPosition?: BoxSizeType;
-	sizeLg: SizeValue;
-	sizeLx: SizeValue;
-}
-
-export const MultiSelectPicker: React.FC<Props> = ({
+const MultiSelectPicker: React.FC<PropsMultiSelectPicker> = ({
 	loading,
 	error,
 	placeholder,
@@ -206,3 +184,5 @@ export const MultiSelectPicker: React.FC<Props> = ({
 		</>
 	);
 };
+
+export default MultiSelectPicker;
